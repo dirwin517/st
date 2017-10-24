@@ -1,5 +1,5 @@
 {
-  "name": "st",
+  "name": "st2",
   "version": "1.2.2",
   "description": "A module for serving static files.  Does etags, caching, etc.",
   "main": "st.js",
