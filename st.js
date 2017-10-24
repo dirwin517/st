@@ -301,10 +301,13 @@ Mount.prototype.serve = function (req, res, next) {
       }
 
       // only set headers once we're sure we'll be serving this request
-      if (!res.getHeader('cache-control') && this._cacheControl)
+      if (!res.getHeader('cache-control') && this._cacheControl) {
         res.setHeader('cache-control', this._cacheControl)
+      }
       res.setHeader('last-modified', stat.mtime.toUTCString())
-      res.setHeader('etag', etag)
+      if(this.opt.etag !== false){
+        res.setHeader('etag', etag)
+      }
 
       if (this.opt.cors) {
         res.setHeader('Access-Control-Allow-Origin', '*')
