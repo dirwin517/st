@@ -304,8 +304,9 @@ Mount.prototype.serve = function (req, res, next) {
       if (!res.getHeader('cache-control') && this._cacheControl) {
         res.setHeader('cache-control', this._cacheControl)
       }
-      res.setHeader('last-modified', stat.mtime.toUTCString())
+
       if(this.opt.etag !== false){
+          res.setHeader('last-modified', stat.mtime.toUTCString());
         res.setHeader('etag', etag)
       }
 
